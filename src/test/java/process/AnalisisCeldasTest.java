@@ -35,10 +35,37 @@ public class AnalisisCeldasTest {
         Si una célula viva tiene más de tres vecinos vivos, muere.
         Si una célula muerta tiene exactamente tres vecinos vivos, se vuelve viva.*/
 
+        Assert.assertEquals(0, aplicarReglas(0, 1));
+        Assert.assertEquals(0, aplicarReglas(0, 0));
 
-        int vecinos = 6;
-        int celula = 1;
-        int result;
+        Assert.assertEquals(0, aplicarReglas(1, 1));
+        Assert.assertEquals(0, aplicarReglas(1, 0));
+
+        Assert.assertEquals(1, aplicarReglas(2, 1));
+        Assert.assertEquals(0, aplicarReglas(2, 0));
+
+        Assert.assertEquals(1, aplicarReglas(3, 1));
+        Assert.assertEquals(1, aplicarReglas(3, 0));
+
+        Assert.assertEquals(0, aplicarReglas(4, 1));
+        Assert.assertEquals(0, aplicarReglas(4, 0));
+
+        Assert.assertEquals(0, aplicarReglas(5, 1));
+        Assert.assertEquals(0, aplicarReglas(5, 0));
+
+        Assert.assertEquals(0, aplicarReglas(6, 1));
+        Assert.assertEquals(0, aplicarReglas(6, 0));
+
+        Assert.assertEquals(0, aplicarReglas(7, 1));
+        Assert.assertEquals(0, aplicarReglas(7, 0));
+
+        Assert.assertEquals(0, aplicarReglas(8, 1));
+        Assert.assertEquals(0, aplicarReglas(8, 0));
+
+    }
+
+    private int aplicarReglas(int vecinos, int celula) {
+        int result=1;
         if (celula == 1 && vecinos < 2) {
             result = 0;
         }
@@ -51,10 +78,9 @@ public class AnalisisCeldasTest {
         if (celula == 0 && vecinos == 3) {
             result = 1;
         } else {
-            result = 0;
+            if (celula==0)  result = 0;
         }
-
-
+        return result;
     }
 
     private void analisar(int fila, int columna) {
