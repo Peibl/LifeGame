@@ -13,7 +13,7 @@ public class MatrizService {
     }
 
 
-    private void analisar(int fila, int columna) {
+    public void analisar(int fila, int columna) {
         if (siTengoFilaArriba(fila) && siTengoColumnaALaIzquierda(columna)) {
             sumarValorDeArribaALaIzquierda(fila, columna);
         }
