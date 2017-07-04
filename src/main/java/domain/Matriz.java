@@ -5,7 +5,7 @@ import java.util.Random;
 public class Matriz {
 	private int filas = 200;
 	private int columnas = 200;
-	private int matriz[][] = { { 1, 0, 1 }, { 1, 1, 1 }, { 1, 0, 0 } };
+	private int matriz[][] ;//= { { 1, 0, 1 }, { 1, 1, 1 }, { 1, 0, 0 } };
 
 	public Matriz() {
 		Random rand = new Random();

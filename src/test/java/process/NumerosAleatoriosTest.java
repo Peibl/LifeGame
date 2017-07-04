@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import domain.Matriz;
 
-public class NumerosAleatorios {
+public class NumerosAleatoriosTest {
 
 	@Test
 	public void test() {
