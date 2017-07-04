@@ -12,13 +12,9 @@ public class MatrizServiceTest {
     @Test
     public void testService() throws Exception {
 //        Matriz matriz = new Matriz();
-        Matriz matriz = new Matriz(5, 5);
-        matriz.show();
+        Matriz matriz = new Matriz(200, 200);
         MatrizService matrizService = new MatrizService(matriz);
-
         Matriz generar = matrizService.generar();
-        System.out.println("===========");
-        generar.show();
 
 
     }
