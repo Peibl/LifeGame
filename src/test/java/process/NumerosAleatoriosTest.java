@@ -20,11 +20,6 @@ public class NumerosAleatoriosTest {
 
 	}
 
-	@Test
-	public void test2() {
-		Matriz matriz = new Matriz();
-		int[][] matriz2 = matriz.getMatriz();
 
-	}
 
 }

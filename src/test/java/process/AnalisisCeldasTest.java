@@ -1,5 +1,6 @@
 package process;
 
+import domain.Matriz;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,21 +10,21 @@ public class AnalisisCeldasTest {
 
     int matriz[][] = {{1, 0, 1}, {1, 1, 1}, {1, 0, 1}};
 
-    int contadorDeUnos = 0;
     MatrizService matrizService;
 
 
     @Before
     public void setUp() throws Exception {
-        matrizService = new MatrizService(matriz);
+        matrizService = new MatrizService(new Matriz(3,3,matriz));
     }
 
     @Test
     public void test() {
         int fila = 1;
         int columna = 1;
-        matrizService.analisar(fila, columna);
+        int contadorDeUnos = matrizService.analisar(fila, columna);
         Assert.assertEquals(6, contadorDeUnos);
+
 
     }
 
@@ -31,7 +32,7 @@ public class AnalisisCeldasTest {
     public void test2() {
         int fila = 0;
         int columna = 0;
-        matrizService.analisar(fila, columna);
+        int contadorDeUnos = matrizService.analisar(fila, columna);
         Assert.assertEquals(2, contadorDeUnos);
 
     }
@@ -69,7 +70,10 @@ public class AnalisisCeldasTest {
     }
 
     private int aplicarReglas(int vecinos, int celula) {
-/*        int result = 1;
+        return matrizService.aplicarReglas(vecinos, celula);
+    }
+
+ /*        int result = 1;
         if (celula == 1 && vecinos < 2) {
             result = 0;
         }
@@ -85,22 +89,4 @@ public class AnalisisCeldasTest {
             if (celula == 0) result = 0;
         }
         return result;*/
-        return aplicarReglas2(vecinos, celula);
-    }
-
-    private int aplicarReglas2(int vecinos, int celula) {
-        if (vecinos > 3) {
-            return 0;
-        }
-        if (vecinos == 3) {
-            return 1;
-        }
-        if (vecinos == 2) {
-            return celula;
-        }
-        if (vecinos < 2) {
-            return 0;
-        }
-        return 1;
-    }
 }

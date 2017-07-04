@@ -1,19 +1,37 @@
 package service;
 
+import domain.Matriz;
+
 /**
  * Created by tapia on 04/07/17.
  */
 public class MatrizService {
 
     int contadorDeUnos;
-    private int[][] matriz;
+    private Matriz matriz;
 
-    public MatrizService( int[][] matriz) {
+    public MatrizService(Matriz matriz) {
         this.matriz = matriz;
     }
 
+    public int aplicarReglas(int vecinos, int celula) {
+        if (vecinos > 3) {
+            return 0;
+        }
+        if (vecinos == 3) {
+            return 1;
+        }
+        if (vecinos == 2) {
+            return celula;
+        }
+        if (vecinos < 2) {
+            return 0;
+        }
+        return 1;
+    }
 
-    public void analisar(int fila, int columna) {
+
+    public int analisar(int fila, int columna) {
         if (siTengoFilaArriba(fila) && siTengoColumnaALaIzquierda(columna)) {
             sumarValorDeArribaALaIzquierda(fila, columna);
         }
@@ -38,39 +56,40 @@ public class MatrizService {
         if (siTengoFilaAbajo(fila)) {
             sumarValorDeAbajo(fila, columna);
         }
+        return contadorDeUnos;
     }
 
 
     private void sumarValorDeAbajo(int fila, int columna) {
-        contadorDeUnos += matriz[fila + 1][columna];
+        contadorDeUnos += matriz.getValue(fila + 1,columna);
     }
 
     private void sumarValorAbajoALaDerecha(int fila, int columna) {
-        contadorDeUnos += matriz[fila + 1][columna + 1];
+        contadorDeUnos += matriz.getValue(fila + 1,columna + 1);
     }
 
     private void sumarValorAbajoALaIzquierda(int fila, int columna) {
-        contadorDeUnos += matriz[fila + 1][columna - 1];
+        contadorDeUnos += matriz.getValue(fila + 1,columna - 1);
     }
 
     private void sumarElValorQueTengoALaDerecha(int fila, int columna) {
-        contadorDeUnos += matriz[fila][columna + 1];
+        contadorDeUnos += matriz.getValue(fila,columna + 1);
     }
 
     private void sumarElValorQueTengoALaIzquierda(int fila, int columna) {
-        contadorDeUnos += matriz[fila][columna - 1];
+        contadorDeUnos += matriz.getValue(fila,columna - 1);
     }
 
     private void sumarElValorQueTengoArriba(int fila, int columna) {
-        contadorDeUnos += matriz[fila - 1][columna];
+        contadorDeUnos += matriz.getValue(fila - 1,columna);
     }
 
     private void sumarArribaALaDerecha(int fila, int columna) {
-        contadorDeUnos += matriz[fila - 1][columna + 1];
+        contadorDeUnos += matriz.getValue(fila - 1,columna + 1);
     }
 
     private void sumarValorDeArribaALaIzquierda(int fila, int columna) {
-        contadorDeUnos += matriz[fila - 1][columna - 1];
+        contadorDeUnos += matriz.getValue(fila - 1,columna - 1);
     }
 
     private boolean siTengoColumnaALaIzquierda(int columna) {
@@ -82,10 +101,26 @@ public class MatrizService {
     }
 
     private boolean siTengoFilaAbajo(int fila) {
-        return (fila + 1) <= matriz.length;
+        return (fila + 1) < matriz.getFilas();
     }
 
     private boolean siTengoColumnaALaDerecha(int columna) {
-        return (columna + 1) <= matriz.length;
+        return (columna + 1) < matriz.getColumnas();
+    }
+
+    public Matriz generar() {
+        int filas = matriz.getFilas();
+        int columnas = matriz.getColumnas();
+        int[][] newMatriz = new int[filas][columnas];
+
+        for (int row = 0; row < filas; row++) {
+            for (int columns = 0; columns < columnas; columns++) {
+                int vecinos = analisar(row, columns);
+                this.contadorDeUnos=0;
+                int nuevaCelula = aplicarReglas(vecinos, matriz.getValue(row, columns));
+                newMatriz[row][columns] = nuevaCelula;
+            }
+        }
+        return new Matriz(filas, columnas,newMatriz);
     }
 }
