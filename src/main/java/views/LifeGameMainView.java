@@ -1,24 +1,20 @@
 package views;
 
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.Timer;
-
 import domain.Matriz;
 
-public class LifeGameMainView extends JFrame implements ActionListener {
+import javax.swing.*;
+import java.awt.*;
+
+public class LifeGameMainView extends JFrame  {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2093811644869322876L;
-	private Timer timer;
+    private Timer timer;
 	private PanelParaDibujar panelParaDibujar;
 
-	public LifeGameMainView() {
+	public LifeGameMainView() throws InterruptedException {
 
 		super("robot-snake-fight");
 
@@ -35,14 +31,20 @@ public class LifeGameMainView extends JFrame implements ActionListener {
 
 		this.setContentPane(container);
 		this.setVisible(true);
-		timer = new Timer(50, this);
-		timer.start();
+		run3();
 
 	}
 
-	public void actionPerformed(ActionEvent e) {
 
-		panelParaDibujar.repaint();
-	}
+    public void run3() throws InterruptedException {
+    while (true){
+        Thread.sleep(1000);
+        Matriz mat=new Matriz();
+        System.out.println(mat.toString());
+        panelParaDibujar.updateMatriz(mat);
+        panelParaDibujar.paintComponent(panelParaDibujar.getGraphics());
+    }
 
+
+    }
 }

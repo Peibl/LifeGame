@@ -34,4 +34,9 @@ public class Matriz {
 	public int getValue(int row, int column) {
 		return matriz[row][column];
 	}
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
