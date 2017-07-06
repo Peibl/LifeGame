@@ -3,5 +3,12 @@
   <groupId>com.nacebo</groupId>
   <artifactId>LifeGame</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>LifeGame</name>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
+    <name>LifeGame</name>
 </project>
