@@ -11,11 +11,16 @@ public class MatrizServiceTest {
 
     @Test
     public void testService() throws Exception {
-//        Matriz matriz = new Matriz();
         Matriz matriz = new Matriz(200, 200);
-        MatrizService matrizService = new MatrizService(matriz);
-        Matriz generar = matrizService.generar();
+        matriz.show();
+        MatrizService matrizService = new MatrizService();
 
+        for (int x = 0; x < 10; x++) {
+
+            System.out.println("#################");
+            matriz = matrizService.generar(matriz);
+            matriz.show();
+        }
 
     }
 }

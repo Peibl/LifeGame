@@ -1,49 +1,51 @@
 package views;
 
 import domain.Matriz;
+import service.MatrizService;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LifeGameMainView extends JFrame  {
+public class LifeGameMainView extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2093811644869322876L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2093811644869322876L;
     private Timer timer;
-	private PanelParaDibujar panelParaDibujar;
+    private PanelParaDibujar panelParaDibujar;
+    Matriz mat = new Matriz(200, 200);
+    MatrizService matrizService = new MatrizService();
 
-	public LifeGameMainView() throws InterruptedException {
+    public LifeGameMainView() throws InterruptedException {
 
-		super("robot-snake-fight");
+        super("robot-snake-fight");
 
-		this.setBounds(0, 0, 810, 610);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(0, 0, 810, 610);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Container container = this.getContentPane();
-		container.setLayout(null);
+        Container container = this.getContentPane();
+        container.setLayout(null);
 
-		panelParaDibujar = new PanelParaDibujar();
-		panelParaDibujar.updateMatriz(new Matriz(200,200));
-		panelParaDibujar.setBounds(0, 0, 810, 610);
-		container.add(panelParaDibujar);
+        panelParaDibujar = new PanelParaDibujar();
+        panelParaDibujar.updateMatriz(new Matriz(1000, 1000));
+        panelParaDibujar.setBounds(0, 0, 800, 600);
+        container.add(panelParaDibujar);
 
-		this.setContentPane(container);
-		this.setVisible(true);
-		run3();
+        this.setContentPane(container);
+        this.setVisible(true);
+        run3();
 
-	}
+    }
 
 
     public void run3() throws InterruptedException {
-    while (true){
-        Thread.sleep(1000);
-        Matriz mat=new Matriz();
-        System.out.println(mat.toString());
-        panelParaDibujar.updateMatriz(mat);
-        panelParaDibujar.paintComponent(panelParaDibujar.getGraphics());
-    }
+        while (true) {
+            Thread.sleep(100);
+            panelParaDibujar.updateMatriz(mat);
+            panelParaDibujar.paintComponent(panelParaDibujar.getGraphics());
+            this.mat = matrizService.generar(mat);
+        }
 
 
     }

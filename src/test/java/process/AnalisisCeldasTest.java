@@ -1,6 +1,5 @@
 package process;
 
-import domain.Matriz;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,7 @@ public class AnalisisCeldasTest {
 
     @Before
     public void setUp() throws Exception {
-        matrizService = new MatrizService(new Matriz(3,3,matriz));
+        matrizService = new MatrizService();
     }
 
     @Test
@@ -73,20 +72,4 @@ public class AnalisisCeldasTest {
         return matrizService.aplicarReglas(vecinos, celula);
     }
 
- /*        int result = 1;
-        if (celula == 1 && vecinos < 2) {
-            result = 0;
-        }
-        if (celula == 1 && (vecinos == 2 || vecinos == 3)) {
-            result = 1;
-        }
-        if (celula == 1 && vecinos > 3) {
-            result = 0;
-        }
-        if (celula == 0 && vecinos == 3) {
-            result = 1;
-        } else {
-            if (celula == 0) result = 0;
-        }
-        return result;*/
 }

@@ -10,8 +10,7 @@ public class MatrizService {
     int contadorDeUnos;
     private Matriz matriz;
 
-    public MatrizService(Matriz matriz) {
-        this.matriz = matriz;
+    public MatrizService() {
     }
 
     public int aplicarReglas(int vecinos, int celula) {
@@ -108,7 +107,8 @@ public class MatrizService {
         return (columna + 1) < matriz.getColumnas();
     }
 
-    public Matriz generar() {
+    public Matriz generar(Matriz matriz) {
+        this.matriz = matriz;
         int filas = matriz.getFilas();
         int columnas = matriz.getColumnas();
         int[][] newMatriz = new int[filas][columnas];
