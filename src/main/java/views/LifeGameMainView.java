@@ -25,7 +25,7 @@ public class LifeGameMainView extends JFrame  {
 		container.setLayout(null);
 
 		panelParaDibujar = new PanelParaDibujar();
-		panelParaDibujar.updateMatriz(new Matriz());
+		panelParaDibujar.updateMatriz(new Matriz(200,200));
 		panelParaDibujar.setBounds(0, 0, 810, 610);
 		container.add(panelParaDibujar);
 
