@@ -40,11 +40,14 @@ public class LifeGameMainView extends JFrame {
 
 
     public void run3() throws InterruptedException {
+        long interacciones=0;
         while (true) {
-            Thread.sleep(100);
+            Thread.sleep(10);
             panelParaDibujar.updateMatriz(mat);
             panelParaDibujar.paintComponent(panelParaDibujar.getGraphics());
             this.mat = matrizService.generar(mat);
+            interacciones+=1;
+            this.setTitle(String.valueOf(interacciones));
         }
 
 

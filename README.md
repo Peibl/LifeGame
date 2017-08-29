@@ -13,6 +13,4 @@ Se aplicaron cuatro reglas a cada celda en cada paso de la simulación:
     Si una célula viva tiene más de tres vecinos vivos, muere.
     Si una célula muerta tiene exactamente tres vecinos vivos, se vuelve viva.
 
-¡Agradable y simple! Sin embargo, si usted prueba diferentes combinaciones de las redes de partida, puede obtener resultados muy extraños. Lazos infinitos, máquinas que escupen formas, y más. El Juego de la Vida es un ejemplo de un autómata celular - una cuadrícula de células que se rigen por ciertas reglas.
-
-Vamos a implementar un sistema muy similar a la Vida, pero en lugar de producir patrones y formas divertidas, va a crear increíbles sistemas de cuevas para nuestros juegos.
+¡Agradable y simple! Sin embargo, si usted prueba diferentes combinaciones de las redes de partida, puede obtener resultados muy extraños. Lazos infinitos, máquinas que escupen formas, y más.
