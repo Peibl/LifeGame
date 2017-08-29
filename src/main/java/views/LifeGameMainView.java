@@ -2,6 +2,8 @@ package views;
 
 import domain.Matriz;
 import service.MatrizService;
+import utils.BinaryFillStrategy;
+import utils.ChanceFillStrategy;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,7 @@ public class LifeGameMainView extends JFrame {
     private static final long serialVersionUID = -2093811644869322876L;
     private Timer timer;
     private PanelParaDibujar panelParaDibujar;
-    Matriz mat = new Matriz(200, 200);
+    Matriz mat = new Matriz(200, 200,new ChanceFillStrategy(0.45f));
     MatrizService matrizService = new MatrizService();
 
     public LifeGameMainView() throws InterruptedException {
@@ -28,7 +30,7 @@ public class LifeGameMainView extends JFrame {
         container.setLayout(null);
 
         panelParaDibujar = new PanelParaDibujar();
-        panelParaDibujar.updateMatriz(new Matriz(1000, 1000));
+        panelParaDibujar.updateMatriz(this.mat);
         panelParaDibujar.setBounds(0, 0, 800, 600);
         container.add(panelParaDibujar);
 
@@ -42,7 +44,7 @@ public class LifeGameMainView extends JFrame {
     public void run3() throws InterruptedException {
         long interacciones=0;
         while (true) {
-            Thread.sleep(10);
+            Thread.sleep(1000);
             panelParaDibujar.updateMatriz(mat);
             panelParaDibujar.paintComponent(panelParaDibujar.getGraphics());
             this.mat = matrizService.generar(mat);

@@ -14,6 +14,7 @@ public class NumerosAleatoriosTest {
 		for (int i = 0; i < 100; i++) {
 
 			Random rand = new Random();
+			System.out.println(rand.nextFloat());
 			int n = rand.nextInt(2);
 			System.out.println(n);
 		}

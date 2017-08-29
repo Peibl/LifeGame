@@ -29,6 +29,25 @@ public class MatrizService {
         return 1;
     }
 
+    public int aplicarReglas2(int vecinos, int celula) {
+        int deathLimit=3;
+        int birthLimit = 4;
+        if (celula==0){
+            if (vecinos > birthLimit) {
+                return 1;
+            }else{
+                return 0;
+            }
+
+        }else{
+            if (vecinos < deathLimit) {
+                return 0;
+            }else{
+                return 1;
+            }
+        }
+
+    }
 
     public int analisar(int fila, int columna) {
         if (siTengoFilaArriba(fila) && siTengoColumnaALaIzquierda(columna)) {
@@ -117,7 +136,7 @@ public class MatrizService {
             for (int columns = 0; columns < columnas; columns++) {
                 int vecinos = analisar(row, columns);
                 this.contadorDeUnos=0;
-                int nuevaCelula = aplicarReglas(vecinos, matriz.getValue(row, columns));
+                int nuevaCelula = aplicarReglas2(vecinos, matriz.getValue(row, columns));
                 newMatriz[row][columns] = nuevaCelula;
             }
         }

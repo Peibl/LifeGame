@@ -2,6 +2,7 @@ package service;
 
 import domain.Matriz;
 import org.junit.Test;
+import utils.BinaryFillStrategy;
 
 /**
  * Created by tapia on 04/07/17.
@@ -11,7 +12,7 @@ public class MatrizServiceTest {
 
     @Test
     public void testService() throws Exception {
-        Matriz matriz = new Matriz(200, 200);
+        Matriz matriz = new Matriz(200, 200,new BinaryFillStrategy());
         matriz.show();
         MatrizService matrizService = new MatrizService();
 
